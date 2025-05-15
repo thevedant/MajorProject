@@ -1,0 +1,53 @@
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Node modules (for Node.js projects)
+node_modules/
+
+# Dependency directories
+vendor/
+bower_components/
+
+# Build output
+dist/
+build/
+out/
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+*.bak
+
+# Editor directories and files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Environment files
+.env
+
+# Ignore coverage reports
+coverage/
+
+# Ignore test output
+test-output/
+
+# Ignore personal settings
+*.local
+
+# Ignore compiled source
+*.class
+*.o
+*.so
+*.dll
+*.exe
+
+# Ignore package managers lock files (optional)
+package-lock.json
+yarn.lock
