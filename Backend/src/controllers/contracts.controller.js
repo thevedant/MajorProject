@@ -43,6 +43,11 @@ const createKyc = asyncHandler(async(req, res) =>{
     issuerHash,
   });
 
+  console.log("Contract Block id :"+ newContract._id);
+  console.log("Issuer id : " + newContract.issuerHash);
+  console.log("User Id : " + newContract.userHash);
+  console.log("Valid Until : "+ newContract.validUntil);
+
   return res.status(201).json(
     new ApiResponse(201, newContract, "KYC Contract created successfully")
   );

@@ -12,11 +12,38 @@ function LogIn() {
       alert('Please select a role and enter your hash address.');
       return;
     }
+
+    try {
+    if (!window.ethereum) {
+      alert("MetaMask is not installed");
+      return;
+    }
+    
+
+    // Request access to MetaMask accounts
+    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+
+    // Assume the user is entering a hashAddress or it comes from your login form
+    const enteredAddress = hashAddress.toLowerCase();
+
+    // Check if entered address is in MetaMask
+    const isLinked = accounts.some(acc => acc.toLowerCase() === enteredAddress);
+
+    if (!isLinked) {
+      alert("This address is not linked to your MetaMask. Please switch account.");
+      return;
+    }
+  }
+  catch (err) {
+    alert(err.message);
+  }
   
     const endpoint =
       role === 'customer'
         ? 'http://localhost:8000/api/users/login'
         : 'http://localhost:8000/api/org/login';
+
+      console.log(endpoint);  
   
     try {
       const response = await fetch(endpoint, {
@@ -50,7 +77,7 @@ function LogIn() {
 
   return (
    
-      <div className="w-screen h-screen flex items-center justify-center bg-black pt-20">
+      <div className="w-screen h-screen flex items-center justify-center pt-20">
         <form
           onSubmit={handleSubmit}
           className="bg-white p-8 rounded-xl shadow-md w-full max-w-2xl space-y-6"

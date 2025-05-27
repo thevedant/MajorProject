@@ -45,6 +45,7 @@ const createOrganization = asyncHandler(async (req, res) => {
   
   // 2. Get Organization by Hash Address
   const getOrganization = asyncHandler(async (req, res) => {
+    // console.log("hii");
     const { hashAddress } = req.body;
   
     const organization = await Organization.findOne({ hashAddress });
